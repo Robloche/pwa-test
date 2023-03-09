@@ -21,12 +21,18 @@
 }
 
 .button {
-    background-color: #259409;
-    border: 2px solid #259409;
+    --color: #259409;
+
+    background-color: var(--color);
+    border: 2px solid var(--color);
     border-radius: 10px;
     cursor: pointer;
     font-family: 'Courier New', Courier, monospace;
     font-size: 1.2rem;
     font-weight: 600;
     padding: 0.5rem 1rem;
+}
+
+.button:hover {
+    --color: #57AB41;
 }

@@ -13,16 +13,27 @@ const fetchData = async () => {
   }
 }
 
+const Status = Object.freeze({
+  Idle: 0,
+  Loading: 1,
+  Error: 2
+});
+
 const Advice = () => {
+  const [status, setStatus] = useState(Status.Idle);
   const [data, setData] = useState(null)
   const isOnline = useContext(ConnectivityContext);
 
   const refresh = useCallback(async () => {
+    setStatus(Status.Loading);
     const response = await fetchData();
     if (response) {
+      setStatus(Status.Idle);
       setData(response.data);
+    } else {
+      setStatus(Status.Error);
     }
-  }, [setData]);
+  }, [setData, setStatus]);
 
   useEffect(() => {
     refresh();
@@ -31,10 +42,11 @@ const Advice = () => {
   return (
     <div className={styles.advice}>
       <h2 className={styles.headerText}>Advice</h2>
-      <p className={styles.paragraph}>{data?.slip.advice}</p>
-      <button className={styles.button} disabled={!isOnline} onClick={refresh}
+      <p
+        className={styles.paragraph}>{status === Status.Error ? 'Error seeking advice. Please retry...' : data?.slip.advice}</p>
+      <button className={styles.button} disabled={!isOnline || status === Status.Loading} onClick={refresh}
               title={isOnline ? '' : 'Cannot seek advice while offline'}>
-        Seek Advice 🤲
+        {status === Status.Loading ? 'Seeking...' : 'Seek Advice 🤲'}
       </button>
     </div>
   );
