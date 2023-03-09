@@ -2,12 +2,11 @@
     align-items: center;
     background-color: var(--bg-color);
     display: flex;
+    font-size: 1.5rem;
+    font-weight: bold;
     justify-content: center;
-    left: 0;
-    padding: 2rem;
-    position: absolute;
-    top: 0;
-    width: 100%;
+    margin-bottom: 2rem;
+    padding: 1rem;
 }
 
 .banner.online {

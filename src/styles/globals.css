@@ -4,6 +4,7 @@
   --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
     'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
     'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
+  --font-size: 14px;
 
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -81,8 +82,10 @@
 
 html,
 body {
+  font-family: var(--font-mono);
   max-width: 100vw;
   overflow-x: hidden;
+  font-size: var(--font-size);
 }
 
 body {
@@ -103,5 +106,11 @@ a {
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
+  }
+}
+
+@media (max-width: 400px) {
+  :root {
+    --font-size: 10px;
   }
 }
