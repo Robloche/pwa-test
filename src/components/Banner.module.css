@@ -1,0 +1,19 @@
+.banner {
+    align-items: center;
+    background-color: var(--bg-color);
+    display: flex;
+    justify-content: center;
+    left: 0;
+    padding: 2rem;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.banner.online {
+    --bg-color: green;
+}
+
+.banner.offline {
+    --bg-color: red;
+}
